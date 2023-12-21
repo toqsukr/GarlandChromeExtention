@@ -11,7 +11,7 @@
 
 .garland-switcher {
   position: absolute;
-  top: -15px;
+  top: -30px;
   right: 15px;
   width: auto;
   height: auto;
@@ -21,7 +21,12 @@
 }
 
 .garland-switcher:hover {
-  transform: translateY(15px);
+  transform: translateY(14px);
+  transition: transform 0.3s;
+}
+
+.garland-switcher:active {
+  transform: translateY(28px);
   transition: transform 0.3s;
 }
 
