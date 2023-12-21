@@ -1,0 +1,99 @@
+.main-garland-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  pointer-events: inherit;
+}
+
+.garland-switcher {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.garland-switcher:hover {
+  transform: translateY(15px);
+  transition: transform 0.3s;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --background-color: #ffffff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-style: 100%;
+  line-height: 1;
+  background-color: var(--background-color);
+  transition: background-color 0.3s;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  bottom: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
