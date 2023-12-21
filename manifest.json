@@ -3,7 +3,12 @@
   "name": "New Year Garland",
   "version": "1.0",
   "description": "This is a small New Year's garland project for chrome",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage"],
+  "icons": {
+    "16": "images/icon32.png",
+    "48": "images/icon64.png",
+    "128": "images/icon128.png"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

@@ -1,7 +1,15 @@
 let isNight = false
+
+const applyBackgroundColor = style => document.body.style.setProperty('--background-color', style)
+
 const switcherListener = () => {
   isNight = !isNight
-  document.body.style.setProperty('--background-color', isNight ? '#202020' : '#eeeeee')
+  const style = isNight ? '#202020' : '#eeeeee'
+  applyBackgroundColor(style)
+  if (chrome.storage)
+    chrome.storage.sync.set({ GarlandbackgroundColor: style }, () => {
+      chrome.runtime.sendMessage({ updateGarlandStyle: true })
+    })
 }
 
 const appendGarland = () => {
@@ -31,7 +39,34 @@ const appendGarland = () => {
   garlandSwitcher.innerHTML = garlandSwitcherContent
   mainGarlandContainer.appendChild(garlandSwitcher)
   document.body.appendChild(mainGarlandContainer)
+  document.querySelector('.garland-switcher').addEventListener('click', switcherListener)
+}
+const initSettings = () => {
+  if (chrome.storage) {
+    chrome.storage.sync.get('GarlandbackgroundColor', data => {
+      const style = data.GarlandbackgroundColor
+      if (style) applyBackgroundColor(style)
+    })
+    chrome.storage.onChanged.addListener(changes => {
+      for (let key in changes) {
+        if (key === 'GarlandbackgroundColor') {
+          applyBackgroundColor(changes[key].newValue)
+        }
+      }
+    })
+  }
+  chrome.runtime.onMessage.addListener(function (message) {
+    console.log('new message!')
+    if (message.updateStyle) {
+      chrome.storage.sync.get('GarlandbackgroundColor', data => {
+        const style = data.GarlandbackgroundColor
+        if (style) {
+          applyBackgroundColor(style)
+        }
+      })
+    }
+  })
 }
 
 appendGarland()
-document.querySelector('.garland-switcher').addEventListener('click', switcherListener)
+initSettings()
