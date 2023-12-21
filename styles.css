@@ -32,7 +32,7 @@
 
 :root {
   --index: calc(1vw + 1vh);
-  --background-color: #ffffff;
+  --background-color: #ffffff !important;
 }
 
 * {
@@ -71,7 +71,7 @@ body {
   width: 100%;
   font-style: 100%;
   line-height: 1;
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   transition: background-color 0.3s;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
